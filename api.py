@@ -6,6 +6,10 @@ import pandas as pd
 app = Flask(__name__)
 api = Api(app) 
 
+@app.route('/')
+def index():
+    return 'Bem Vindo'
+
 
 
 
