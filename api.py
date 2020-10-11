@@ -64,4 +64,4 @@ api.add_resource(MensagensTwitter, '/<cidade>/<palavras_chaves>')
 
 if __name__ == '__main__':
     cidades = pd.read_csv('cidades.csv')
-    app.run(debug=True)
+    app.run(debug=False)
