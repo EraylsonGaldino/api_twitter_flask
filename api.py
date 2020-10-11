@@ -8,7 +8,7 @@ api = Api(app)
 
 @app.route('/')
 def index():
-    return 'Bem Vindo'
+    return "<h2>Bem Vindo<h2>'
 
 
 
@@ -68,4 +68,4 @@ api.add_resource(MensagensTwitter, '/<cidade>/<palavras_chaves>')
 
 if __name__ == '__main__':
     cidades = pd.read_csv('cidades.csv')
-    app.run(debug=False)
+    app.run(threaded=True) #Threaded option to enable multiple instances for multiple user access support
