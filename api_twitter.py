@@ -63,7 +63,7 @@ def selecionar_twitter(palavras_chaves, local):
         return 'null', 'null'
 
     dados_twitter = pd.DataFrame(twitters, columns=['ID', 'Nome', 'Conta', 'Texto', 'palavra_chave'])
-    select = np.random.randint(len(dados_twitter))
+    select = np.random.randint(0, len(dados_twitter))
     twitter_selected = dados_twitter['Texto'][select]
     user_selected = dados_twitter['Conta'][select]
 
