@@ -8,15 +8,15 @@ api = Api(app)
 
 @app.route('/')
 def index():
-    return "<h2>Bem Vindo<h2>'
+    return "<h2>Bem Vindo<h2>"
 
 
 
-
+"""
 def abort_if_city_doesnt_exist(cidade):
     if cidade.lower() not in cidades.values:
         abort(404, message="Cidade {} nao existe".format(cidade))
-
+"""
 
 def abort_if_words_doesnt_exist(twitter):
     if twitter == 'null':
@@ -31,7 +31,7 @@ parser.add_argument('task')
 
 class Cidade(Resource):
     def get(self, cidade):
-        abort_if_city_doesnt_exist(cidade)
+        #abort_if_city_doesnt_exist(cidade)
         return {'cidade': cidade, 'informacoes': 'Cidade encontrada'}
 
 
@@ -67,5 +67,5 @@ api.add_resource(MensagensTwitter, '/<cidade>/<palavras_chaves>')
 
 
 if __name__ == '__main__':
-    cidades = pd.read_csv('cidades.csv')
+    #cidades = pd.read_csv('cidades.csv')
     app.run(threaded=True) #Threaded option to enable multiple instances for multiple user access support
