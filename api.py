@@ -4,9 +4,7 @@ import api_twitter
 import pandas as pd
 
 app = Flask(__name__)
-api = Api(app)
-
-
+api = Api(app) 
 
 
 
