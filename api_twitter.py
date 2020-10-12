@@ -2,6 +2,7 @@ import tweepy
 import numpy as np
 import pandas as pd 
 from datetime import date
+import utils
 
 
   
@@ -54,6 +55,11 @@ def obter_twitters(api, qtd_twittes, strings_busca, data):
     return dados 
 
 
+def validar_texto(twitter):
+    palavras= utils.palavras_censuradas()
+    return any(item in palavras for item in twitter) 
+
+
 def selecionar_twitter(palavras_chaves, local):
     data = date.today()
     qtd_twittes = 200
@@ -65,12 +71,26 @@ def selecionar_twitter(palavras_chaves, local):
 
     dados_twitter = pd.DataFrame(twitters, columns=['ID', 'Nome', 'Conta', 'Texto', 'palavra_chave'])
 
-    select = np.random.randint(0, len(dados_twitter), 5)
-
-    twitters_selected = list(dados_twitter['Texto'][select].values)
-    users_selected = list(dados_twitter['Conta'][select].values)
-         
+    twitters_selected = []
+    users_selected = []
+    id_selected = []
+    
+    i = 0
+    while(i < 5):
+        select = np.random.randint(0, len(dados_twitter))
         
+        if select not in id_selected:
+            id_selected.append(select)
+            twitter_selected = dados_twitter['Texto'][select]
+            user_selected =  dados_twitter['Conta'][select]
+            
+
+            texto_invalido = validar_texto(twitter_selected.split(" "))
+
+            if texto_invalido == False:
+                twitters_selected.append(twitter_selected)
+                users_selected.append(user_selected)
+                i+=1
     
 
     return twitters_selected, users_selected
