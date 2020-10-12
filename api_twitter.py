@@ -1,6 +1,7 @@
 import tweepy
 import numpy as np
 import pandas as pd 
+from datetime import date
 
 
   
@@ -54,20 +55,25 @@ def obter_twitters(api, qtd_twittes, strings_busca, data):
 
 
 def selecionar_twitter(palavras_chaves, local):
-    data = data = "2020-01-01"
-    qtd_twittes = 1000
+    data = data = data_atual = date.today()
+    qtd_twittes = 200
     api = login_api()
     twitters = obter_twitters(api, qtd_twittes, palavras_chaves, data)
 
     if len(twitters) < 1:
-        return 'null', 'null'
+        return list(), list()
 
     dados_twitter = pd.DataFrame(twitters, columns=['ID', 'Nome', 'Conta', 'Texto', 'palavra_chave'])
-    select = np.random.randint(0, len(dados_twitter))
-    twitter_selected = dados_twitter['Texto'][select]
-    user_selected = dados_twitter['Conta'][select]
 
-    return twitter_selected, user_selected
+    select = np.random.randint(0, len(dados_twitter), 5)
+
+    twitters_selected = list(dados_twitter['Texto'][select].values)
+    users_selected = list(dados_twitter['Conta'][select].values)
+        
+        
+    
+
+    return twitters_selected, users_selected
 
 
 
