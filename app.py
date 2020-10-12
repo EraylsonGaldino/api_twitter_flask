@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask, render_template
 from flask_restful import reqparse, abort, Api, Resource
 import api_twitter 
 import pandas as pd
@@ -8,7 +8,7 @@ api = Api(app)
 
 @app.route('/')
 def index():
-    return "<h2>Bem Vindo<h2>"
+    return render_template('index.html')
 
 
 
