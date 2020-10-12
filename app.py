@@ -57,7 +57,7 @@ class MensagensTwitter(Resource):
 
         abort_if_words_doesnt_exist(twt_selected)
 
-        print({'Twitter': twt_selected, "User": user_selected})
+        
 
         return {'Twitter': twt_selected, "User": user_selected}
 

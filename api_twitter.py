@@ -55,7 +55,7 @@ def obter_twitters(api, qtd_twittes, strings_busca, data):
 
 
 def selecionar_twitter(palavras_chaves, local):
-    data = data = data_atual = date.today()
+    data = date.today()
     qtd_twittes = 200
     api = login_api()
     twitters = obter_twitters(api, qtd_twittes, palavras_chaves, data)
