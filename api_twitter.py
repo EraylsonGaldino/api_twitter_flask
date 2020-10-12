@@ -69,7 +69,7 @@ def selecionar_twitter(palavras_chaves, local):
 
     twitters_selected = list(dados_twitter['Texto'][select].values)
     users_selected = list(dados_twitter['Conta'][select].values)
-        
+         
         
     
 
