@@ -20,7 +20,7 @@ def abort_if_city_doesnt_exist(cidade):
 
 def abort_if_words_doesnt_exist(twitter):
     if twitter == 'null':
-        abort(404, message="Palavras chaves {} nao encontradas".format(cidade))
+        abort(404, message="Palavras chaves {} nao encontradas".format(twitter))
 
 parser = reqparse.RequestParser()
 parser.add_argument('task')
